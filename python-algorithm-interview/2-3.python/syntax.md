@@ -249,3 +249,38 @@ if 1 % 10 == 0:
 
 # not은 보통 boolean에 사용되므로 숫자에 사용하면 혼동이 생길 수 있음
 ```
+
+# is와 ==
+- `is`는 id() 값을 비교하며, `==`는 값을 비교함
+
+```python
+# no
+if a == None:
+
+# yes
+if a is None:
+
+# None은 값이 없는 null이므로 ==로 비교 불가능
+```
+```python
+a = [1, 2, 3]
+
+a == a # True
+
+a == list(a) # True
+
+a is a # True
+
+a is list(a) # False
+
+# list()로 묶을 경우 같은 값을 가지는 별도의 객체가 새로 생성되므로 ID 값이 달라짐
+```
+```python
+a = [1, 2, 3]
+
+a == copy.deepcopy(a) # True
+
+a is copy.deepcopy(a) # False
+
+# copy.deepcopy() 역시 같은 값을 가지는 별도의 객체가 새로 생성되므로 ID 값을 비교하는 is에서는 False
+```
