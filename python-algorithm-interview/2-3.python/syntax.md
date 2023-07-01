@@ -284,3 +284,53 @@ a is copy.deepcopy(a) # False
 
 # copy.deepcopy() 역시 같은 값을 가지는 별도의 객체가 새로 생성되므로 ID 값을 비교하는 is에서는 False
 ```
+
+# 정렬
+- 파이썬 기본 정렬 함수
+
+## sorted()
+- 리스트, 문자열 등을 정렬해 리스트 형태로 리턴
+
+```python
+a = [5, 3, 1, 6, 4]
+print(sorted(a))
+# 결과: [1, 3, 4, 5, 6]
+```
+- key 파라미터를 이용해 정렬 기준 지정 가능
+    - 함수, 람다식 이용 가능
+```python
+a = ['ccc', 'aaaa', 'd', 'bb']
+print(a, key=len)
+# 결과: ['d', 'bb', 'ccc', 'aaaa']
+```
+```python
+a = ['cbe', 'cfc', 'abc']
+print(sorted(a, key=lambda s:(s[0], s[-1])))
+# 결과: ['abc', 'cfc', 'cbe']
+```
+```python
+a = ['cbe', 'cfc', 'abc']
+
+def fn(s):
+    return s[0], s[-1]
+
+print(sorted(a, key=fn))
+# 결과: ['abc', 'cfc', 'cbe']
+```
+
+- reverse 파라미터를 이용해 정렬 순서 지정 가능
+```python
+a = [5, 3, 1, 6, 4]
+print(sorted(a, reverse=True))
+# 결과: [6, 5, 4, 3, 1]
+```
+
+## sort()
+- 리스트 자료형에 제공되는 메소드
+- 리스트를 정렬하며, 리턴값 없음
+```python
+a = [5, 3, 1, 6, 4]
+a.sort()
+print(a)
+# 결과: [1, 3, 4, 5, 6]
+```
