@@ -39,3 +39,12 @@ class Solution:
         for i, num in enumerate(nums):
             if target - num in nums_map and i != nums_map[target - num]:
                 return [i, nums_map[target - num]]
+            
+    # 조회 구조 개선
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        nums_map = {}
+        # 하나의 for문으로 통하
+        for i, num in enumerate(nums):
+            if target - num in nums_map:
+                return [nums[target - num], i]
+            nums_map[num] = i
